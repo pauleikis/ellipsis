@@ -9,6 +9,27 @@ hs.hotkey.bind(meh, "R",
   end
 )
 
+local switches = {
+  {'B', 'Safari'},
+  {'M', 'Messages'},
+  {'D', 'IntelliJ IDEA'},
+  {'C', 'Visual Studio Code'},
+  {'F', 'Finder'},
+  {'P', 'Spotify'},
+  {'S', 'Slack'},
+  {'T', 'iterm'},
+  {'K', 'Keychain Access'},
+  {'J', 'Activity Monitor'},
+}
+
+for k, v in pairs(switches) do
+  hs.hotkey.bind(hyper, v[1],
+  function()
+    hs.application.open(v[2])
+  end
+)
+end
+
 hs.loadSpoon("SpoonInstall")
 spoon.SpoonInstall:andUse(
     "MiroWindowsManager",
@@ -18,10 +39,12 @@ spoon.SpoonInstall:andUse(
             right = {meh, "right"},
             down = {meh, "down"},
             left = {meh, "left"},
-            fullscreen = {meh, "m"}
+            fullscreen = {meh, "="}
         }
     }
 )
+
+
 
 hs.hotkey.bind({"cmd", "alt", "ctrl"}, "W", function()
     hs.notify.new({title="Hammerspoon", informativeText="Hello World"}):send()
