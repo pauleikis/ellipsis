@@ -44,6 +44,18 @@ spoon.SpoonInstall:andUse(
     }
 )
 
+hs.hotkey.bind(meh, "]", function()
+  -- move the focused window one display to the right
+  local win = hs.window.focusedWindow()
+  win:moveOneScreenEast()
+end)
+
+hs.hotkey.bind(meh, "[", function()
+  -- move the focused window one display to the left
+  local win = hs.window.focusedWindow()
+  win:moveOneScreenWest()
+end)
+
 
 
 hs.hotkey.bind({"cmd", "alt", "ctrl"}, "W", function()
