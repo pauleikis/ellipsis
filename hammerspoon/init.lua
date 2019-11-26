@@ -18,8 +18,9 @@ local switches = {
   {'P', 'Spotify'},
   {'S', 'Slack'},
   {'T', 'iterm'},
-  {'K', 'Keychain Access'},
+  {'K', 'Keycehain Access'},
   {'J', 'Activity Monitor'},
+  {'V', 'DBeaver'},
 }
 
 for k, v in pairs(switches) do
