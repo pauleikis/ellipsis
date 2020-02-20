@@ -9,19 +9,42 @@ hs.hotkey.bind(meh, "R",
   end
 )
 
+-- uncomment to print out all application names
+-- hs.fnutils.each(
+--   hs.application.runningApplications(),
+--   function(app)
+--     print(app:title()) 
+--   end
+-- )
+
 local switches = {
-  {'B', 'Safari'},
-  {'M', 'Messages'},
   {'D', 'IntelliJ IDEA'},
-  {'C', 'Visual Studio Code'},
   {'F', 'Finder'},
-  {'P', 'Spotify'},
-  {'S', 'Slack'},
+  {'B', 'Brave Browser'},
+
   {'T', 'iterm'},
-  {'K', 'Keycehain Access'},
-  {'J', 'Activity Monitor'},
+  {'O', 'Safari'},
+  {'A', 'Slack'},
+  {'W', 'Messages'},
+
   {'V', 'DBeaver'},
+  {'C', 'Visual Studio Code'},
+  {'K', 'Spotify'},
+
+  {'H', 'Keychain Access'},
+
+  {'M', 'Activity Monitor'},
 }
+
+hs.hotkey.bind(hyper, "space",
+  function()
+    local msg = ""
+    for k, v in pairs(switches) do
+      msg = msg .. v[1] .. " -> " .. v[2] .. "\n"
+    end
+    hs.alert.show(string.gsub(msg, "%s+$", ""), 10)
+  end
+)
 
 for k, v in pairs(switches) do
   hs.hotkey.bind(hyper, v[1],
@@ -60,5 +83,8 @@ end)
 
 
 hs.hotkey.bind({"cmd", "alt", "ctrl"}, "W", function()
-    hs.notify.new({title="Hammerspoon", informativeText="Hello World"}):send()
+    hs.alert.show("Hello!")
+    -- hs.notify.new({title="Hammerspoon", informativeText="Hello World"}):send()
   end)
+
+hs.hotkey.bind(meh, "tab", hs.caffeinate.lockScreen)
